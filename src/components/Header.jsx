@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Header = ({ background }) => {
+const Header = ({ background, gradientBackground }) => {
   return (
     <header
       style={{

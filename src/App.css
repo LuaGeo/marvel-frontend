@@ -20,6 +20,7 @@ header {
   justify-content: space-between;
   margin-right: 100px;
   position: fixed;
+  z-index: 2;
 }
 
 button {
@@ -32,6 +33,13 @@ button {
   background-color: rgba(236, 235, 235, 0.452);
   font-weight: bold;
   color: rgb(100, 100, 100);
+}
+
+header > img {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
 }
 
 .spiderLogoContainer {
@@ -88,6 +96,17 @@ article img {
   height: 180px;
   object-fit: cover;
   border-radius: 10px;
+
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+article img:hover {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  filter: none;
 }
 
 .descriptionContainer {
@@ -102,9 +121,6 @@ article img {
   font-size: 16px;
   overflow: hidden;
   box-sizing: border-box;
-}
-
-p {
 }
 
 @keyframes logo-spin {

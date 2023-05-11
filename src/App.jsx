@@ -13,11 +13,14 @@ import Header from "./components/Header";
 import spidermanLogo from "./assets/imgs/spiderman-logo.svg";
 import noImageHero from "./assets/imgs/no-photo-hero.jpg";
 import background from "./assets/imgs/venom-background.jpg";
+// import gradientBackground from "./assets/imgs/gradient-background.png";
 
 function App() {
   return (
     <Router>
-      <Header background={background} />
+      <Header
+        background={background} /*gradientBackground={gradientBackground} */
+      />
       <Routes>
         <Route
           path="/"
@@ -37,7 +40,9 @@ function App() {
         />
         <Route
           path="/favorites"
-          element={<Favorites background={background} />}
+          element={
+            <Favorites background={background} spidermanLogo={spidermanLogo} />
+          }
         />
       </Routes>
     </Router>
