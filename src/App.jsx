@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 // --- Pages --- //
 import Characters from "./pages/Characters";
 import Comics from "./pages/Comics";
-import Favorites from "./pages/Favorites";
+import ComicCharacter from "./pages/ComicCharacter";
 
 // --- Components --- //
 import Header from "./components/Header";
@@ -39,9 +39,12 @@ function App() {
           }
         />
         <Route
-          path="/favorites"
+          path={`/comics/${id}`}
           element={
-            <Favorites background={background} spidermanLogo={spidermanLogo} />
+            <ComicCharacter
+              background={background}
+              spidermanLogo={spidermanLogo}
+            />
           }
         />
       </Routes>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 // import ReactPaginate from "react-paginate";
 import Loading from "../components/Loading";
+import { Link } from "react-router-dom";
 
 const Characters = ({ spidermanLogo, noImageHero, background }) => {
   const [data, setData] = useState();
@@ -33,6 +34,7 @@ const Characters = ({ spidermanLogo, noImageHero, background }) => {
       <div className="container">
         {data.map((character) => {
           return (
+            // <Link to={`/comics/${character._id}`} >
             <article key={character._id}>
               <div className="nameContainer">
                 <h2>{character.name}</h2>
@@ -59,6 +61,7 @@ const Characters = ({ spidermanLogo, noImageHero, background }) => {
                 <p>{character.description}</p>
               </div>
             </article>
+            // </Link>
           );
         })}
       </div>
