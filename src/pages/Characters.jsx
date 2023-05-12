@@ -34,34 +34,40 @@ const Characters = ({ spidermanLogo, noImageHero, background }) => {
       <div className="container">
         {data.map((character) => {
           return (
-            // <Link to={`/comics/${character._id}`} >
-            <article key={character._id}>
-              <div className="nameContainer">
-                <h2>{character.name}</h2>
-              </div>
-              {character.thumbnail.path ===
-              "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" ? (
-                <div className="imgCharacterContainer">
-                  <img src={noImageHero} alt="" />
+            <Link
+              to={`/comics/${character._id}`}
+              key={character._id}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <article>
+                <div className="nameContainer">
+                  <h2>{character.name}</h2>
                 </div>
-              ) : (
-                <div className="imgCharacterContainer">
-                  <img
-                    src={
-                      character.thumbnail.path +
-                      "." +
-                      character.thumbnail.extension
-                    }
-                    alt="{character.name}"
-                  />
-                </div>
-              )}
+                {character.thumbnail.path ===
+                "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" ? (
+                  <div className="imgCharacterContainer">
+                    <img src={noImageHero} alt="" />
+                  </div>
+                ) : (
+                  <div className="imgCharacterContainer">
+                    <img
+                      src={
+                        character.thumbnail.path +
+                        "." +
+                        character.thumbnail.extension
+                      }
+                      alt="{character.name}"
+                    />
+                  </div>
+                )}
 
-              <div className="descriptionContainer">
-                <p>{character.description}</p>
-              </div>
-            </article>
-            // </Link>
+                <div className="descriptionContainer">
+                  {character.description && (
+                    <p>{character.description.replace("/&#39;/", "'")} </p>
+                  )}
+                </div>
+              </article>
+            </Link>
           );
         })}
       </div>

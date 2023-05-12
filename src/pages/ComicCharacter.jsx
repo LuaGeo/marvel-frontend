@@ -4,7 +4,8 @@ import Loading from "../components/Loading";
 import { useParams } from "react-router-dom";
 
 const ComicCharacter = ({ background, spidermanLogo }) => {
-  const id = useParams();
+  const characterId = useParams();
+  console.log(characterId);
 
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -12,8 +13,11 @@ const ComicCharacter = ({ background, spidermanLogo }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000//comics/${id}`);
+        const response = await axios.get(
+          `http://localhost:3000//comics/:characterId`
+        );
         setData(response.data);
+        console(response);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -34,7 +38,7 @@ const ComicCharacter = ({ background, spidermanLogo }) => {
       <div className="container">
         {data.comics.map((comic) => {
           return (
-            <article key={comic._id}>
+            <article key={characterId}>
               <div className="nameContainer">
                 <h2>{comic.title}</h2>
               </div>

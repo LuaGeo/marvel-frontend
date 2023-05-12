@@ -44,7 +44,9 @@ const Comics = ({ background, spidermanLogo }) => {
               </div>
 
               <div className="descriptionContainer">
-                <p>{comic.description}</p>
+                {comic.description && (
+                  <p>{comic.description.replace(/&#39;/g, "'")} </p>
+                )}
               </div>
             </article>
           );

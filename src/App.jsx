@@ -1,5 +1,10 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useParams,
+} from "react-router-dom";
 
 // --- Pages --- //
 import Characters from "./pages/Characters";
@@ -16,6 +21,8 @@ import background from "./assets/imgs/venom-background.jpg";
 // import gradientBackground from "./assets/imgs/gradient-background.png";
 
 function App() {
+  const { characterId } = useParams();
+  console.log(characterId);
   return (
     <Router>
       <Header
@@ -39,7 +46,7 @@ function App() {
           }
         />
         <Route
-          path={`/comics/${id}`}
+          path="/comics/:characterId"
           element={
             <ComicCharacter
               background={background}
