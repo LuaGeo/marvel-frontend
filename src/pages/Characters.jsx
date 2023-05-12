@@ -7,11 +7,17 @@ import { Link } from "react-router-dom";
 const Characters = ({ spidermanLogo, noImageHero, background }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/characters");
+        const limit = 100;
+        const skip = (currentPage - 1) * limit;
+        const response = await axios.get(
+          `http://localhost:3000/characters?name=${search}&skip=${skip}&limit=${limit}`
+        );
         setData(response.data.results);
         setIsLoading(false);
       } catch (error) {
@@ -19,7 +25,19 @@ const Characters = ({ spidermanLogo, noImageHero, background }) => {
       }
     };
     fetchData();
-  }, []);
+  }, [search, currentPage]);
+
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+  };
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+  const handleNextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
 
   return isLoading ? (
     <Loading spidermanLogo={spidermanLogo} background={background} />
@@ -31,6 +49,7 @@ const Characters = ({ spidermanLogo, noImageHero, background }) => {
         backgroundAttachment: "fixed",
       }}
     >
+      <input type="text" onChange={handleSearch} />
       <div className="container">
         {data.map((character) => {
           return (
@@ -70,6 +89,11 @@ const Characters = ({ spidermanLogo, noImageHero, background }) => {
             </Link>
           );
         })}
+      </div>
+      <div>
+        <button onClick={handlePreviousPage}>⏪</button>
+        <p>{currentPage}</p>
+        <button onClick={handleNextPage}>⏩</button>
       </div>
     </main>
   );
