@@ -1,7 +1,16 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
-const Header = ({ background, gradientBackground, setVisible, visible }) => {
+const Header = ({
+  background,
+  gradientBackground,
+  setVisible,
+  visible,
+  setVisibleLogin,
+  visibleLogin,
+  handleUserData,
+  token,
+}) => {
+  const navigate = useNavigate();
   return (
     <header
       style={{
@@ -11,15 +20,40 @@ const Header = ({ background, gradientBackground, setVisible, visible }) => {
       }}
     >
       <img src={gradientBackground} alt="" />
-      <div>
-        <button
-          className="signupButton"
-          onClick={() => {
-            setVisible(!visible);
-          }}
-        >
-          S'inscrire
-        </button>
+      <div className="allButtons">
+        <div className="connectionButtons">
+          {token ? (
+            <button
+              onClick={() => {
+                handleUserData(null, null);
+                navigate("/");
+              }}
+            >
+              Déconnexion
+            </button>
+          ) : (
+            <div className="buttonsConnection">
+              <button
+                className="signupButton"
+                onClick={() => {
+                  setVisible(!visible);
+                }}
+              >
+                S'inscrire
+              </button>
+
+              <button
+                className="loginButton"
+                onClick={() => {
+                  setVisibleLogin(!visibleLogin);
+                }}
+              >
+                Se connecter
+              </button>
+            </div>
+          )}
+        </div>
+
         <div className="buttonsContainer">
           <Link onClick={() => (window.location.href = "/")}>
             <button>Personages</button>

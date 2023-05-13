@@ -40,7 +40,7 @@ const Signup = ({ handleUserData, setVisible }) => {
 
   return (
     <div
-      className="modal-signUp"
+      className="modal"
       onClick={() => {
         setVisible(false);
       }}

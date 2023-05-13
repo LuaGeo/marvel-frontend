@@ -16,6 +16,7 @@ import ComicCharacter from "./pages/ComicCharacter";
 // --- Components --- //
 import Header from "./components/Header";
 import SignUp from "./components/SignUp";
+import Login from "./components/Login";
 
 // --- Images --- //
 import spidermanLogo from "./assets/imgs/spiderman-logo.svg";
@@ -31,6 +32,7 @@ function App() {
   const [userId, setUserId] = useState(Cookies.get("marvel-user-id") || null);
 
   const [visible, setVisible] = useState(false);
+  const [visibleLogin, setVisibleLogin] = useState(false);
 
   const handleUserData = (userData) => {
     if (userData && userData.token && userData.userId) {
@@ -55,6 +57,9 @@ function App() {
         token={token}
         setVisible={setVisible}
         visible={visible}
+        setVisibleLogin={setVisibleLogin}
+        visibleLogin={visibleLogin}
+        token={token}
       />
       <Routes>
         <Route
@@ -85,6 +90,12 @@ function App() {
       </Routes>
       {visible && (
         <SignUp handleUserData={handleUserData} setVisible={setVisible} />
+      )}
+      {visibleLogin && (
+        <Login
+          handleUserData={handleUserData}
+          setVisibleLogin={setVisibleLogin}
+        />
       )}
     </Router>
   );
