@@ -10,7 +10,8 @@ header {
   width: 100vw;
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  /* align-items: center; */
+  /* border: 2px red solid; */
 }
 
 header img {
@@ -18,12 +19,41 @@ header img {
   height: 100px;
 }
 
+header .connectionButtons {
+  /* border: 1px solid black; */
+  width: 300px;
+  display: flex;
+  gap: 20px;
+  margin-right: 246px;
+  margin-top: 10px;
+  position: fixed;
+  top: 17px;
+  right: 0;
+}
+
+.connectionButtons button {
+  color: #000;
+  background-color: #fff;
+  border: 1px solid black;
+  height: 30px;
+  width: 130px;
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+.connectionButtons button:hover {
+  color: #fff;
+  background-color: #000;
+  cursor: pointer;
+}
+
 .buttonsContainer {
   width: 700px;
   height: 100px;
   display: flex;
   justify-content: space-between;
-  margin-right: 100px;
+  margin-right: 156px;
+  margin-top: 35px;
   position: fixed;
   right: 111px;
   top: 50px;
@@ -75,8 +105,8 @@ main .container {
   justify-content: flex-end;
   position: fixed;
   z-index: 1;
-  right: 211px;
-  top: 230px;
+  right: 268px;
+  top: 223px;
 }
 
 .searchBar input {

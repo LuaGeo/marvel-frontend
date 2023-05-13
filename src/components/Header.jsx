@@ -19,7 +19,7 @@ const Header = ({
         backgroundAttachment: "fixed",
       }}
     >
-      <img src={gradientBackground} alt="" />
+      {/* <img src={gradientBackground} alt="" /> */}
       <div className="allButtons">
         <div className="connectionButtons">
           {token ? (
@@ -32,7 +32,7 @@ const Header = ({
               Déconnexion
             </button>
           ) : (
-            <div className="buttonsConnection">
+            <div className="connectionButtons">
               <button
                 className="signupButton"
                 onClick={() => {

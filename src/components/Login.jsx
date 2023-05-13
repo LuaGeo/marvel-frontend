@@ -32,6 +32,8 @@ const Login = ({ handleUserData, setVisibleLogin }) => {
     } catch (error) {
       if (error.message === "Request failed with status code 401") {
         setErrorMessage("Mot de passe incorrect");
+      } else if (error.response.data.error.message === "Missing Parameters") {
+        setErrorMessage("Veuillez remplir tous les champs");
       }
       // console.log(error.message);
       // console.log(error.response.data);

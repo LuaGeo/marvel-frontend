@@ -22,7 +22,7 @@ import Login from "./components/Login";
 import spidermanLogo from "./assets/imgs/spiderman-logo.svg";
 import noImageHero from "./assets/imgs/no-photo-hero.jpg";
 import background from "./assets/imgs/venom-background.jpg";
-import gradientBackground from "./assets/imgs/gradient.png";
+// import gradientBackground from "./assets/imgs/gradient.png";
 
 function App() {
   const { characterId } = useParams();
@@ -52,7 +52,7 @@ function App() {
     <Router>
       <Header
         background={background}
-        gradientBackground={gradientBackground}
+        /*gradientBackground={gradientBackground}*/
         handleUserData={handleUserData}
         token={token}
         setVisible={setVisible}
