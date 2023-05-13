@@ -3,12 +3,14 @@ import axios from "axios";
 // import ReactPaginate from "react-paginate";
 import Loading from "../components/Loading";
 import { Link } from "react-router-dom";
+import Heart from "react-heart";
 
 const Characters = ({ spidermanLogo, noImageHero, background }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,13 +58,14 @@ const Characters = ({ spidermanLogo, noImageHero, background }) => {
       <div className="container">
         {data.map((character) => {
           return (
-            <Link
-              to={`/comics/${character._id}`}
-              key={character._id}
-              style={{ textDecoration: "none", color: "black" }}
-              // state={{ title: "Toto", price: "12" }}
-            >
-              <article>
+            <article key={character._id}>
+              <div key={character._id} style={{ width: "2rem" }}>
+                <Heart isActive={active} onClick={() => setActive(!active)} />
+              </div>
+              <Link
+                to={`/comics/${character._id}`}
+                style={{ textDecoration: "none", color: "black" }}
+              >
                 <div className="nameContainer">
                   <h2>{character.name}</h2>
                 </div>
@@ -89,8 +92,8 @@ const Characters = ({ spidermanLogo, noImageHero, background }) => {
                     <p>{character.description.replace("/&#39;/", "'")} </p>
                   )}
                 </div>
-              </article>
-            </Link>
+              </Link>
+            </article>
           );
         })}
       </div>
