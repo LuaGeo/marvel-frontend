@@ -16,7 +16,7 @@ const Characters = ({ spidermanLogo, noImageHero, background }) => {
         const limit = 100;
         const skip = (currentPage - 1) * limit;
         const response = await axios.get(
-          `http://localhost:3000/characters?name=${search}&skip=${skip}&limit=${limit}`
+          `http://site--marvel-backend--6v4khcscf8qp.code.run/characters?name=${search}&skip=${skip}&limit=${limit}`
         );
         setData(response.data.results);
         setIsLoading(false);
@@ -49,7 +49,10 @@ const Characters = ({ spidermanLogo, noImageHero, background }) => {
         backgroundAttachment: "fixed",
       }}
     >
-      <input type="text" onChange={handleSearch} />
+      <div className="searchBar container">
+        <input type="text" onChange={handleSearch} />
+      </div>
+
       <div className="container">
         {data.map((character) => {
           return (
@@ -57,6 +60,7 @@ const Characters = ({ spidermanLogo, noImageHero, background }) => {
               to={`/comics/${character._id}`}
               key={character._id}
               style={{ textDecoration: "none", color: "black" }}
+              // state={{ title: "Toto", price: "12" }}
             >
               <article>
                 <div className="nameContainer">

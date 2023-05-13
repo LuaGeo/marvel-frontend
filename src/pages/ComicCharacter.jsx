@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 const ComicCharacter = ({ background, spidermanLogo }) => {
   const characterId = useParams();
-  console.log(characterId);
+  console.log(characterId.characterId);
 
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -14,10 +14,10 @@ const ComicCharacter = ({ background, spidermanLogo }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000//comics/:characterId`
+          `http://site--marvel-backend--6v4khcscf8qp.code.run/comics/${characterId.characterId}`
         );
         setData(response.data);
-        console(response);
+        console.log(response.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -25,6 +25,7 @@ const ComicCharacter = ({ background, spidermanLogo }) => {
     };
     fetchData();
   }, []);
+
   return isLoading ? (
     <Loading spidermanLogo={spidermanLogo} background={background} />
   ) : (

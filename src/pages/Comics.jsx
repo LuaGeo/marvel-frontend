@@ -9,7 +9,9 @@ const Comics = ({ background, spidermanLogo }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/comics");
+        const response = await axios.get(
+          "http://site--marvel-backend--6v4khcscf8qp.code.run/comics"
+        );
         setData(response.data.results);
         setIsLoading(false);
       } catch (error) {
@@ -39,7 +41,7 @@ const Comics = ({ background, spidermanLogo }) => {
               <div className="imgCharacterContainer">
                 <img
                   src={comic.thumbnail.path + "." + comic.thumbnail.extension}
-                  alt="{comic.title}"
+                  alt={`${comic.title}`}
                 />
               </div>
 
