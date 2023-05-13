@@ -18,7 +18,7 @@ const Characters = ({ spidermanLogo, noImageHero, background }) => {
         const limit = 100;
         const skip = (currentPage - 1) * limit;
         const response = await axios.get(
-          `http://site--marvel-backend--6v4khcscf8qp.code.run/characters?name=${search}&skip=${skip}&limit=${limit}`
+          `https://site--marvel-backend--6v4khcscf8qp.code.run/characters?name=${search}&skip=${skip}&limit=${limit}`
         );
         setData(response.data.results);
         setIsLoading(false);
@@ -70,7 +70,7 @@ const Characters = ({ spidermanLogo, noImageHero, background }) => {
                   <h2>{character.name}</h2>
                 </div>
                 {character.thumbnail.path ===
-                "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" ? (
+                "https://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" ? (
                   <div className="imgCharacterContainer">
                     <img src={noImageHero} alt="" />
                   </div>

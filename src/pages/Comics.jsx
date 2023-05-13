@@ -10,7 +10,7 @@ const Comics = ({ background, spidermanLogo }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://site--marvel-backend--6v4khcscf8qp.code.run/comics"
+          "https://site--marvel-backend--6v4khcscf8qp.code.run/comics"
         );
         setData(response.data.results);
         setIsLoading(false);
