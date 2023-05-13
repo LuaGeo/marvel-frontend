@@ -97,7 +97,7 @@ const Characters = ({ spidermanLogo, noImageHero, background }) => {
           );
         })}
       </div>
-      <div>
+      <div className="pagination">
         <button onClick={handlePreviousPage}>⏪</button>
         <p>{currentPage}</p>
         <button onClick={handleNextPage}>⏩</button>

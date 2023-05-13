@@ -13,6 +13,11 @@ header {
   align-items: center;
 }
 
+header img {
+  width: 60%;
+  height: 100px;
+}
+
 .buttonsContainer {
   width: 700px;
   height: 100px;
@@ -138,6 +143,84 @@ article img:hover {
   font-size: 16px;
   overflow: hidden;
   box-sizing: border-box;
+}
+
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ---Login and SignUp Modals */
+.App {
+  position: relative;
+}
+
+.modal-signUp {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 4;
+}
+
+form {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffffb4;
+}
+
+form > div {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+form > input {
+  width: 100%;
+  height: 51px;
+  border-style: none;
+  outline: none;
+  border-radius: 3px;
+  padding: 10px;
+  border-bottom: 1px solid #fcced3;
+  box-sizing: border-box;
+}
+
+form button {
+  width: 30px;
+  height: 30px;
+  color: grey;
+  background-color: #fff;
+  font-size: 18px;
+  border-radius: 3px;
+  text-align: center;
+  align-items: center;
+}
+
+form .buttonsLoginSignUp {
+  width: 100%;
+  height: 45px;
+  margin-top: 45px;
+  background-color: #007580;
+  color: #fff;
+  border-style: none;
+  border-radius: 5px;
+}
+
+form p {
+  line-height: 20px;
+  text-align: justify;
 }
 
 @keyframes logo-spin {
