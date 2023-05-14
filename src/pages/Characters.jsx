@@ -70,7 +70,7 @@ const Characters = ({ spidermanLogo, noImageHero, background }) => {
                   <h2>{character.name}</h2>
                 </div>
                 {character.thumbnail.path ===
-                "https://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" ? (
+                "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" ? (
                   <div className="imgCharacterContainer">
                     <img src={noImageHero} alt="" />
                   </div>
