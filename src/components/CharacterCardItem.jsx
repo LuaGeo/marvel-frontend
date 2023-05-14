@@ -3,47 +3,60 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import noImageHero from "../assets/imgs/no-photo-hero.jpg";
 import noImageHeroGreen from "../assets/imgs/no-photo-hero-green.png";
+import axios from "axios";
 
-export const CharacterCardItem = ({ character }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+export const CharacterCardItem = ({
+  character,
+  userId,
+  characterHasThumbnailExtension,
+}) => {
+  const [isFavorite, setIsFavorite] = useState(character.isFavorite);
 
-  const [checkedCards, setCheckedCards] = useState([]);
-  const cardId = character._id;
+  const characterId = character._id;
+  const image = characterHasThumbnailExtension
+    ? `${character.thumbnail.path}.${character.thumbnail.extension}`
+    : character.thumbnail.path;
 
-  const handleHeartClick = (cardId) => {
-    setIsFavorite(!isFavorite);
-
-    const updatedCheckedCards = [...checkedCards];
-
-    const cardIndex = updatedCheckedCards.findIndex(
-      (card) => card.id === cardId
-    );
-
-    if (cardIndex >= 0 && !isFavorite) {
-      // card already exists, remove it
-      updatedCheckedCards.splice(cardIndex, 1);
-    } else {
-      // card doesn't exist, add it
-      updatedCheckedCards.push({
-        id: cardId,
-        name: character.name,
-        image: `${character.thumbnail.path}.${character.thumbnail.extension}`,
-        description: character.description,
-      });
+  const handleHeartClick = async (characterId) => {
+    try {
+      if (isFavorite) {
+        await axios.delete(
+          "https://site--marvel-backend--6v4khcscf8qp.code.run/characters/favorite",
+          {
+            data: {
+              characterId,
+              userId,
+            },
+          }
+        );
+      } else {
+        await axios.post(
+          "https://site--marvel-backend--6v4khcscf8qp.code.run/characters/favorite",
+          {
+            characterId,
+            userId,
+            name: character.name,
+            description: character.description,
+            image,
+          }
+        );
+      }
+      setIsFavorite(!isFavorite);
+    } catch (error) {
+      console.log(error);
     }
-
-    setCheckedCards(updatedCheckedCards);
   };
-  console.log(checkedCards);
 
   return (
     <article>
       <div className="heartContainer">
         <div>
-          <Heart
-            isActive={isFavorite}
-            onClick={() => handleHeartClick(cardId)}
-          />
+          {userId && (
+            <Heart
+              isActive={isFavorite}
+              onClick={() => handleHeartClick(characterId)}
+            />
+          )}
         </div>
       </div>
       <Link
@@ -55,7 +68,10 @@ export const CharacterCardItem = ({ character }) => {
         </div>
         {!character?.thumbnail?.path ||
         character.thumbnail.path ===
-          "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" ? (
+          "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" ||
+        image.includes(
+          "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
+        ) ? (
           isFavorite ? (
             <div className="imgCharacterContainer">
               <img src={noImageHeroGreen} alt="" style={{ filter: "none" }} />
@@ -73,10 +89,7 @@ export const CharacterCardItem = ({ character }) => {
                 : "imgCharacterContainer"
             }
           >
-            <img
-              src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-              alt={character.name}
-            />
+            <img src={image} alt={character.name} />
           </div>
         )}
 

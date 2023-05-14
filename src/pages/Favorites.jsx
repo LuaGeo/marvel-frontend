@@ -21,6 +21,7 @@ export const Favorites = ({ background, spidermanLogo, userId }) => {
     };
     fetchData();
   }, []);
+
   return isLoading ? (
     <Loading spidermanLogo={spidermanLogo} background={background} />
   ) : (
@@ -38,8 +39,12 @@ export const Favorites = ({ background, spidermanLogo, userId }) => {
             thumbnail: {
               path: dataItem.image,
             },
+            isFavorite: true,
+            _id: dataItem.characterId,
           };
         })}
+        userId={userId}
+        characterHasThumbnailExtension={false}
       />
     </main>
   );

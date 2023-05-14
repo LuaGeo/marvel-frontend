@@ -28,7 +28,7 @@ const Header = ({
             <button
               onClick={() => {
                 handleUserData(null, null);
-                navigate("/");
+                navigate(0);
               }}
             >
               Déconnexion
@@ -63,9 +63,11 @@ const Header = ({
           <Link onClick={() => (window.location.href = "/comics")}>
             <button>Comics</button>
           </Link>
-          <Link to={`/characters/favorite/${userId}`}>
-            <button>Favoris</button>
-          </Link>
+          {userId && (
+            <Link to={`/characters/favorite/${userId}`}>
+              <button>Favoris</button>
+            </Link>
+          )}
         </div>
       </div>
     </header>

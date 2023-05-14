@@ -65,7 +65,11 @@ function App() {
         <Route
           path="/"
           element={
-            <Characters spidermanLogo={spidermanLogo} background={background} />
+            <Characters
+              spidermanLogo={spidermanLogo}
+              background={background}
+              userId={userId}
+            />
           }
         />
         <Route

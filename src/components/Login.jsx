@@ -27,6 +27,7 @@ const Login = ({ handleUserData, setVisibleLogin }) => {
         console.log(response);
         console.log(response.data.id);
         setVisibleLogin(false);
+        navigate(0);
       }
       // console.log(response.data);
     } catch (error) {
