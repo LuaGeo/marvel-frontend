@@ -58,7 +58,6 @@ function App() {
         visible={visible}
         setVisibleLogin={setVisibleLogin}
         visibleLogin={visibleLogin}
-        token={token}
       />
       <Routes>
         <Route

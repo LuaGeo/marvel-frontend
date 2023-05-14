@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 // import ReactPaginate from "react-paginate";
 import Loading from "../components/Loading";
-import CharacterCard from "../components/CharacterCard";
+import { CharactersCards } from "../components/CharactersCards";
 
-const Characters = ({ spidermanLogo, noImageHero, background }) => {
+const Characters = ({ spidermanLogo, background }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -56,7 +56,7 @@ const Characters = ({ spidermanLogo, noImageHero, background }) => {
           placeholder="Cherchez vos personnages favoris..."
         />
       </div>
-      <CharacterCard data={data} />
+      <CharactersCards data={data} />
       <div className="pagination">
         <button onClick={handlePreviousPage}>⏪</button>
         <p>{currentPage}</p>

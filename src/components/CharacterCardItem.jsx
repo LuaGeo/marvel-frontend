@@ -4,17 +4,7 @@ import { useState } from "react";
 import noImageHero from "../assets/imgs/no-photo-hero.jpg";
 import noImageHeroGreen from "../assets/imgs/no-photo-hero-green.png";
 
-const CharacterCard = ({ data }) => {
-  return (
-    <div className="container">
-      {data.map((character) => (
-        <CharacterCardItem key={character._id} character={character} />
-      ))}
-    </div>
-  );
-};
-
-const CharacterCardItem = ({ character }) => {
+export const CharacterCardItem = ({ character }) => {
   const [active, setActive] = useState(false);
   const [checked, setChecked] = useState(false);
 
@@ -97,5 +87,3 @@ const CharacterCardItem = ({ character }) => {
     </article>
   );
 };
-
-export default CharacterCard;
