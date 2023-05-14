@@ -1,4 +1,5 @@
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = ({
   background,
@@ -9,6 +10,7 @@ const Header = ({
   visibleLogin,
   handleUserData,
   token,
+  userId,
 }) => {
   const navigate = useNavigate();
   return (
@@ -61,7 +63,7 @@ const Header = ({
           <Link onClick={() => (window.location.href = "/comics")}>
             <button>Comics</button>
           </Link>
-          <Link to="/favorites">
+          <Link to={`/characters/favorite/${userId}`}>
             <button>Favoris</button>
           </Link>
         </div>

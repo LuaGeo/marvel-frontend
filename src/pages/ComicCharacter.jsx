@@ -3,7 +3,7 @@ import axios from "axios";
 import Loading from "../components/Loading";
 import { useParams } from "react-router-dom";
 
-const ComicCharacter = ({ background, spidermanLogo }) => {
+export const ComicCharacter = ({ background, spidermanLogo }) => {
   const characterId = useParams();
   console.log(characterId.characterId);
 
@@ -60,4 +60,3 @@ const ComicCharacter = ({ background, spidermanLogo }) => {
     </main>
   );
 };
-export default ComicCharacter;

@@ -4,7 +4,7 @@ import axios from "axios";
 import Loading from "../components/Loading";
 import { CharactersCards } from "../components/CharactersCards";
 
-const Characters = ({ spidermanLogo, background }) => {
+export const Characters = ({ spidermanLogo, background }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -65,4 +65,3 @@ const Characters = ({ spidermanLogo, background }) => {
     </main>
   );
 };
-export default Characters;

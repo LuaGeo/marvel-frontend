@@ -9,9 +9,10 @@ import Cookies from "js-cookie";
 import { useState } from "react";
 
 // --- Pages --- //
-import Characters from "./pages/Characters";
-import Comics from "./pages/Comics";
-import ComicCharacter from "./pages/ComicCharacter";
+import { Characters } from "./pages/Characters";
+import { Comics } from "./pages/Comics";
+import { ComicCharacter } from "./pages/ComicCharacter";
+import { Favorites } from "./pages/Favorites";
 
 // --- Components --- //
 import Header from "./components/Header";
@@ -58,6 +59,7 @@ function App() {
         visible={visible}
         setVisibleLogin={setVisibleLogin}
         visibleLogin={visibleLogin}
+        userId={userId}
       />
       <Routes>
         <Route
@@ -78,6 +80,16 @@ function App() {
             <ComicCharacter
               background={background}
               spidermanLogo={spidermanLogo}
+            />
+          }
+        />
+        <Route
+          path="/characters/favorite/:userId"
+          element={
+            <Favorites
+              background={background}
+              spidermanLogo={spidermanLogo}
+              userId={userId}
             />
           }
         />

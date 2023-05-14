@@ -5,15 +5,13 @@ import noImageHero from "../assets/imgs/no-photo-hero.jpg";
 import noImageHeroGreen from "../assets/imgs/no-photo-hero-green.png";
 
 export const CharacterCardItem = ({ character }) => {
-  const [active, setActive] = useState(false);
-  const [checked, setChecked] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const [checkedCards, setCheckedCards] = useState([]);
   const cardId = character._id;
 
   const handleHeartClick = (cardId) => {
-    setActive(!active);
-    setChecked(!checked);
+    setIsFavorite(!isFavorite);
 
     const updatedCheckedCards = [...checkedCards];
 
@@ -21,7 +19,7 @@ export const CharacterCardItem = ({ character }) => {
       (card) => card.id === cardId
     );
 
-    if (cardIndex >= 0 && !checked) {
+    if (cardIndex >= 0 && !isFavorite) {
       // card already exists, remove it
       updatedCheckedCards.splice(cardIndex, 1);
     } else {
@@ -42,7 +40,10 @@ export const CharacterCardItem = ({ character }) => {
     <article>
       <div className="heartContainer">
         <div>
-          <Heart isActive={active} onClick={() => handleHeartClick(cardId)} />
+          <Heart
+            isActive={isFavorite}
+            onClick={() => handleHeartClick(cardId)}
+          />
         </div>
       </div>
       <Link
@@ -52,9 +53,10 @@ export const CharacterCardItem = ({ character }) => {
         <div className="nameContainer">
           <h2>{character.name}</h2>
         </div>
-        {character.thumbnail.path ===
-        "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" ? (
-          checked ? (
+        {!character?.thumbnail?.path ||
+        character.thumbnail.path ===
+          "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" ? (
+          isFavorite ? (
             <div className="imgCharacterContainer">
               <img src={noImageHeroGreen} alt="" style={{ filter: "none" }} />
             </div>
@@ -66,14 +68,14 @@ export const CharacterCardItem = ({ character }) => {
         ) : (
           <div
             className={
-              checked
+              isFavorite
                 ? "imgCharacterContainer-checked"
                 : "imgCharacterContainer"
             }
           >
             <img
               src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-              alt="{character.name}"
+              alt={character.name}
             />
           </div>
         )}

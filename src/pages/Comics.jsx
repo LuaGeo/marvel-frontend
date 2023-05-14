@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "../components/Loading";
 
-const Comics = ({ background, spidermanLogo }) => {
+export const Comics = ({ background, spidermanLogo }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -89,5 +89,3 @@ const Comics = ({ background, spidermanLogo }) => {
     </main>
   );
 };
-
-export default Comics;
