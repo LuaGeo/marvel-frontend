@@ -18,16 +18,41 @@ const CharacterCardItem = ({ character }) => {
   const [active, setActive] = useState(false);
   const [checked, setChecked] = useState(false);
 
-  const handleHeartClick = () => {
+  const [checkedCards, setCheckedCards] = useState([]);
+  const cardId = character._id;
+
+  const handleHeartClick = (cardId) => {
     setActive(!active);
     setChecked(!checked);
+
+    const updatedCheckedCards = [...checkedCards];
+
+    const cardIndex = updatedCheckedCards.findIndex(
+      (card) => card.id === cardId
+    );
+
+    if (cardIndex >= 0 && !checked) {
+      // card already exists, remove it
+      updatedCheckedCards.splice(cardIndex, 1);
+    } else {
+      // card doesn't exist, add it
+      updatedCheckedCards.push({
+        id: cardId,
+        name: character.name,
+        image: `${character.thumbnail.path}.${character.thumbnail.extension}`,
+        description: character.description,
+      });
+    }
+
+    setCheckedCards(updatedCheckedCards);
   };
+  console.log(checkedCards);
 
   return (
     <article>
       <div className="heartContainer">
         <div>
-          <Heart isActive={active} onClick={handleHeartClick} />
+          <Heart isActive={active} onClick={() => handleHeartClick(cardId)} />
         </div>
       </div>
       <Link
@@ -57,9 +82,7 @@ const CharacterCardItem = ({ character }) => {
             }
           >
             <img
-              src={
-                character.thumbnail.path + "." + character.thumbnail.extension
-              }
+              src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
               alt="{character.name}"
             />
           </div>
