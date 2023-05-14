@@ -58,7 +58,7 @@ const Header = ({
           <Link onClick={() => (window.location.href = "/")}>
             <button>Personages</button>
           </Link>
-          <Link to="/comics">
+          <Link onClick={() => (window.location.href = "/comics")}>
             <button>Comics</button>
           </Link>
           <Link to="/favorites">

@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Avengeance';
+    src: url('Avengeance.eot');
+    src: url('Avengeance.eot?#iefix') format('embedded-opentype'),
+        url('Avengeance.woff2') format('woff2'),
+        url('Avengeance.woff') format('woff'),
+        url('Avengeance.ttf') format('truetype'),
+        url('Avengeance.svg#Avengeance') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

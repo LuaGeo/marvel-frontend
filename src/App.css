@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "The Avengers";
+  src: url("https://www.fontsaddict.com/fontface/the-avengers.ttf");
+}
+
 .container {
   max-width: 1220px;
   margin: 0 auto;
@@ -63,7 +68,7 @@ header .connectionButtons {
 button {
   width: 200px;
   height: 100px;
-  font-family: marvel, sans-serif;
+  font-family: "Avengeance", marvel, sans-serif;
   font-size: 30px;
   border-radius: 10px;
   border: 1px solid rgba(128, 128, 128, 0.466);
@@ -98,37 +103,59 @@ main .container {
   gap: 20px;
 }
 
-.searchBar {
-  width: 100%;
+.searchBar input {
+  width: 565px;
   height: 40px;
   display: flex;
   justify-content: flex-end;
   position: fixed;
+  padding: 10px;
+  box-sizing: border-box;
+  outline: none;
+  border-style: none;
+  border: 1px solid rgba(128, 128, 128, 0.466);
+  border-radius: 5px;
   z-index: 1;
   right: 268px;
   top: 223px;
-}
-
-.searchBar input {
-  width: 565px;
+  background-color: #ffffffb9;
 }
 
 article {
-  width: 180px;
-  height: 400px;
+  width: 220px;
+  height: 388px;
   border: 1px grey solid;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0 20px;
+  /* padding: 0 20px; */
+  position: relative;
+}
+
+.heartContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  position: absolute;
+  top: 0;
+  right: 5px;
+}
+
+.heartContainer > div {
+  width: 20px;
 }
 
 .nameContainer {
+  width: 100%;
   height: 60px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 0 25px;
+  box-sizing: border-box;
 }
 
 h2 {
@@ -139,8 +166,8 @@ h2 {
 .imgCharacterContainer {
   width: 180px;
   height: 180px;
-  border: 1px grey solid;
   border-radius: 10px;
+  padding: 0 20px;
 }
 
 article img {
@@ -148,37 +175,53 @@ article img {
   height: 180px;
   object-fit: cover;
   border-radius: 10px;
+  border: 1px grey solid;
 
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
 }
 
 article img:hover {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
+  filter: none;
+}
+
+.imgCharacterContainer-checked img {
   filter: none;
 }
 
 .descriptionContainer {
-  width: 100%;
-  height: 117px;
-  border: 1px rgb(179, 176, 176) solid;
-  border-radius: 10px;
-  margin-top: 20px;
+  width: 86%;
+  height: 109px;
+  margin-top: 14px;
+  margin-left: 10px;
   padding: 5px;
   background-color: #ffffff7a;
   text-align: justify;
   font-size: 16px;
   overflow: hidden;
-  box-sizing: border-box;
+  border-top: 1px rgb(179, 176, 176) solid;
+  border-bottom: 1px rgb(179, 176, 176) solid;
 }
 
 .pagination {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.pagination button {
+  width: 50px;
+  height: 50px;
+  border-style: none;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.pagination p {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 /* ---Login and SignUp Modals */

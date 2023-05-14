@@ -20,7 +20,6 @@ import Login from "./components/Login";
 
 // --- Images --- //
 import spidermanLogo from "./assets/imgs/spiderman-logo.svg";
-import noImageHero from "./assets/imgs/no-photo-hero.jpg";
 import background from "./assets/imgs/venom-background.jpg";
 // import gradientBackground from "./assets/imgs/gradient.png";
 
@@ -65,11 +64,7 @@ function App() {
         <Route
           path="/"
           element={
-            <Characters
-              spidermanLogo={spidermanLogo}
-              noImageHero={noImageHero}
-              background={background}
-            />
+            <Characters spidermanLogo={spidermanLogo} background={background} />
           }
         />
         <Route
