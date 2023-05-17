@@ -63,7 +63,7 @@ header .connectionButtons {
 button {
   width: 200px;
   height: 80px;
-  font-family: "Avengeance", marvel, sans-serif;
+  font-family: marvel, sans-serif;
   font-size: 30px;
   border-radius: 10px;
   border: 1px solid rgba(128, 128, 128, 0.466);
