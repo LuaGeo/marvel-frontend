@@ -14,12 +14,17 @@ export const Characters = ({ spidermanLogo, background, userId }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const limit = 100;
-        const skip = (currentPage - 1) * limit;
+        const hash = process.env.HASH;
+        const apikey = process.env.API_KEY;
+        const limit = 20;
+        const offset = (currentPage - 1) * limit;
         const response = await axios.get(
-          `https://site--marvel-backend--6v4khcscf8qp.code.run/characters?name=${search}&skip=${skip}&limit=${limit}`
+          `https://gateway.marvel.com/v1/public/characters?limit=${limit}&ts=1&apikey=${apikey}&hash=${hash}&offset=${offset}${
+            search && `&nameStartsWith=${search}`
+          }` //&nameStartsWith=${search}
         );
-        setData(response.data.results);
+        setData(response.data.data.results);
+
         if (userId) {
           const favoriteCharactersResponse = await axios.get(
             `https://site--marvel-backend--6v4khcscf8qp.code.run/characters/favorite/${userId}`

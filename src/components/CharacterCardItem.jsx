@@ -60,7 +60,7 @@ export const CharacterCardItem = ({
         </div>
       </div>
       <Link
-        to={`/comics/${character._id}`}
+        to={`/comics/${character.id}`}
         style={{ textDecoration: "none", color: "black" }}
       >
         <div className="nameContainer">

@@ -14,10 +14,10 @@ export const ComicCharacter = ({ background, spidermanLogo }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://site--marvel-backend--6v4khcscf8qp.code.run/comics/${characterId.characterId}`
+          `https://gateway.marvel.com:443/v1/public/characters/${characterId.characterId}/comics?limit=20&ts=1&apikey=${process.env.API_KEY}&hash=${process.env.HASH}`
         );
-        setData(response.data);
-        console.log(response.data);
+        setData(response.data.data.results);
+        console.log(response.data.data.results);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -37,7 +37,7 @@ export const ComicCharacter = ({ background, spidermanLogo }) => {
       }}
     >
       <div className="container">
-        {data.comics.map((comic) => {
+        {data.map((comic) => {
           return (
             <article key={characterId}>
               <div className="nameContainer">

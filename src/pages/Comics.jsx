@@ -11,12 +11,15 @@ export const Comics = ({ background, spidermanLogo }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const limit = 100;
-        const skip = (currentPage - 1) * limit;
+        const hash = process.env.HASH;
+        const apikey = process.env.API_KEY;
+        const limit = 20;
+        const offset = (currentPage - 1) * limit;
         const response = await axios.get(
-          `https://site--marvel-backend--6v4khcscf8qp.code.run/comics?title=${search}&skip=${skip}&limit=${limit}`
+          `https://gateway.marvel.com:443/v1/public/comics?limit=${limit}&ts=1&apikey=${apikey}&hash=${hash}&offset=${offset}
+          `
         );
-        setData(response.data.results);
+        setData(response.data.data.results);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
