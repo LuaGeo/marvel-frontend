@@ -14,7 +14,7 @@ export const ComicCharacter = ({ background, spidermanLogo }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://gateway.marvel.com:443/v1/public/characters/${characterId.characterId}/comics?limit=20&ts=1&apikey=${process.env.API_KEY}&hash=${process.env.HASH}`
+          `https://gateway.marvel.com:443/v1/public/characters/${characterId.characterId}/comics?limit=20&ts=1&apikey=${process.env.REACT_APP_API_KEY}&hash=${process.env.REACT_APP_HASH}`
         );
         setData(response.data.data.results);
         console.log(response.data.data.results);

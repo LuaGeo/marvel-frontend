@@ -11,8 +11,9 @@ export const Comics = ({ background, spidermanLogo }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const hash = process.env.HASH;
-        const apikey = process.env.API_KEY;
+        const hash = process.env.REACT_APP_HASH;
+        const apikey = process.env.REACT_APP_API_KEY;
+        console.log(apikey);
         const limit = 20;
         const offset = (currentPage - 1) * limit;
         const response = await axios.get(
