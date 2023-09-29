@@ -13,8 +13,10 @@ export const ComicCharacter = ({ background, spidermanLogo }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const hash = import.meta.env.VITE_SOME_HASH;
+        const apikey = import.meta.env.VITE_SOME_KEY;
         const response = await axios.get(
-          `https://gateway.marvel.com:443/v1/public/characters/${characterId.characterId}/comics?limit=20&ts=1&apikey=${process.env.REACT_APP_API_KEY}&hash=${process.env.REACT_APP_HASH}`
+          `https://gateway.marvel.com:443/v1/public/characters/${characterId.characterId}/comics?limit=20&ts=1&apikey=${apikey}&hash=${hash}`
         );
         setData(response.data.data.results);
         console.log(response.data.data.results);

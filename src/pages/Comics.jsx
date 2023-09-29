@@ -11,9 +11,8 @@ export const Comics = ({ background, spidermanLogo }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const hash = process.env.REACT_APP_HASH;
-        const apikey = process.env.REACT_APP_API_KEY;
-        console.log(apikey);
+        const hash = import.meta.env.VITE_SOME_HASH;
+        const apikey = import.meta.env.VITE_SOME_KEY;
         const limit = 20;
         const offset = (currentPage - 1) * limit;
         const response = await axios.get(
@@ -22,6 +21,7 @@ export const Comics = ({ background, spidermanLogo }) => {
         );
         setData(response.data.data.results);
         setIsLoading(false);
+        console.log(apikey);
       } catch (error) {
         console.log(error.message);
       }

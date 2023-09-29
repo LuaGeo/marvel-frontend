@@ -14,8 +14,8 @@ export const Characters = ({ spidermanLogo, background, userId }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const hash = process.env.REACT_APP_HASH;
-        const apikey = process.env.REACT_APP_API_KEY;
+        const hash = import.meta.env.VITE_SOME_HASH;
+        const apikey = import.meta.env.VITE_SOME_KEY;
         const limit = 20;
         const offset = (currentPage - 1) * limit;
         const response = await axios.get(
