@@ -52,7 +52,6 @@ function App() {
     <Router>
       <Header
         background={background}
-        /*gradientBackground={gradientBackground}*/
         handleUserData={handleUserData}
         token={token}
         setVisible={setVisible}
@@ -69,13 +68,18 @@ function App() {
               spidermanLogo={spidermanLogo}
               background={background}
               userId={userId}
+              characters="characters"
             />
           }
         />
         <Route
           path="/comics"
           element={
-            <Comics background={background} spidermanLogo={spidermanLogo} />
+            <Comics
+              background={background}
+              spidermanLogo={spidermanLogo}
+              comics="comics"
+            />
           }
         />
         <Route

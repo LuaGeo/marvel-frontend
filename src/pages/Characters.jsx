@@ -3,6 +3,7 @@ import axios from "axios";
 // import ReactPaginate from "react-paginate";
 import Loading from "../components/Loading";
 import { CharactersCards } from "../components/CharactersCards";
+import Header from "../components/Header";
 
 export const Characters = ({ spidermanLogo, background, userId }) => {
   const [data, setData] = useState();
@@ -19,7 +20,7 @@ export const Characters = ({ spidermanLogo, background, userId }) => {
         const limit = 20;
         const offset = (currentPage - 1) * limit;
         const response = await axios.get(
-          `https://gateway.marvel.com/v1/public/characters?limit=${limit}&ts=1&apikey=${apikey}&hash=${hash}&offset=${offset}${
+          `https://gateway.marvel.com/v1/public/characters?limit=${limit}&ts=1&apikey=${apikey}&hash=${hash}&offset=${offset}&orderBy=name${
             search && `&nameStartsWith=${search}`
           }` //&nameStartsWith=${search}
         );

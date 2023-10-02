@@ -9,14 +9,17 @@ export const ComicCharacter = ({ background, spidermanLogo }) => {
 
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const hash = import.meta.env.VITE_SOME_HASH;
         const apikey = import.meta.env.VITE_SOME_KEY;
+        const limit = 20;
+        const offset = (currentPage - 1) * limit;
         const response = await axios.get(
-          `https://gateway.marvel.com:443/v1/public/characters/${characterId.characterId}/comics?limit=20&ts=1&apikey=${apikey}&hash=${hash}`
+          `https://gateway.marvel.com:443/v1/public/characters/${characterId.characterId}/comics?limit=20&ts=1&orderBy=onsaleDate&apikey=${apikey}&hash=${hash}&offset=${offset}`
         );
         setData(response.data.data.results);
         console.log(response.data.data.results);
@@ -26,7 +29,16 @@ export const ComicCharacter = ({ background, spidermanLogo }) => {
       }
     };
     fetchData();
-  }, []);
+  }, [currentPage]);
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+  const handleNextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
 
   return isLoading ? (
     <Loading spidermanLogo={spidermanLogo} background={background} />
@@ -41,23 +53,23 @@ export const ComicCharacter = ({ background, spidermanLogo }) => {
       <div className="container">
         {data.map((comic) => {
           return (
-            <article key={characterId}>
+            <article key={characterId} className="comicContainer">
+              <img
+                src={comic.thumbnail.path + "." + comic.thumbnail.extension}
+                alt={comic.title}
+              />
+
               <div className="nameContainer">
                 <h2>{comic.title}</h2>
-              </div>
-              <div className="imgCharacterContainer">
-                <img
-                  src={comic.thumbnail.path + "." + comic.thumbnail.extension}
-                  alt={comic.title}
-                />
-              </div>
-
-              <div className="descriptionContainer">
-                <p>{comic.description}</p>
               </div>
             </article>
           );
         })}
+      </div>
+      <div className="pagination">
+        <button onClick={handlePreviousPage}>⏪</button>
+        <p>{currentPage}</p>
+        <button onClick={handleNextPage}>⏩</button>
       </div>
     </main>
   );

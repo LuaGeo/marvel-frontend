@@ -48,7 +48,7 @@ export const CharacterCardItem = ({
   };
 
   return (
-    <article>
+    <article className="characterContainer">
       <div className="heartContainer">
         <div>
           {userId && (

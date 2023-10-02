@@ -16,7 +16,9 @@ export const Comics = ({ background, spidermanLogo }) => {
         const limit = 20;
         const offset = (currentPage - 1) * limit;
         const response = await axios.get(
-          `https://gateway.marvel.com:443/v1/public/comics?limit=${limit}&ts=1&apikey=${apikey}&hash=${hash}&offset=${offset}
+          `https://gateway.marvel.com:443/v1/public/comics?limit=${limit}&ts=1&apikey=${apikey}&hash=${hash}&offset=${offset}&orderBy=title${
+            search && `&titleStartsWith=${search}`
+          }
           `
         );
         setData(response.data.data.results);
@@ -55,7 +57,7 @@ export const Comics = ({ background, spidermanLogo }) => {
         <input
           type="text"
           onChange={handleSearch}
-          placeholder="Cherchez vos personnages favoris..."
+          placeholder="Cherchez vos comics favoris..."
         />
       </div>
       <div className="container">
@@ -65,22 +67,21 @@ export const Comics = ({ background, spidermanLogo }) => {
           )
           .map((comic) => {
             return (
-              <article key={comic._id}>
-                <div className="nameContainer">
+              <article className="comicContainer" key={comic.id}>
+                {/* <div className="nameContainer">
                   <h2>{comic.title}</h2>
-                </div>
-                <div className="imgCharacterContainer">
-                  <img
-                    src={comic.thumbnail.path + "." + comic.thumbnail.extension}
-                    alt={`${comic.title}`}
-                  />
-                </div>
+                </div> */}
 
-                <div className="descriptionContainer">
+                <img
+                  src={comic.thumbnail.path + "." + comic.thumbnail.extension}
+                  alt={`${comic.title}`}
+                />
+
+                {/* <div className="descriptionContainer">
                   {comic.description && (
                     <p>{comic.description.replace(/&#39;/g, "'")} </p>
                   )}
-                </div>
+                </div> */}
               </article>
             );
           })}

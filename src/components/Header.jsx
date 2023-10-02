@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
+import transparentBg from "../assets/imgs/newTransparenceBG.png";
 
 const Header = ({
   background,
-  gradientBackground,
   setVisible,
   visible,
   setVisibleLogin,
@@ -10,6 +10,8 @@ const Header = ({
   handleUserData,
   token,
   userId,
+  characters,
+  comics,
 }) => {
   const navigate = useNavigate();
   return (
@@ -21,6 +23,10 @@ const Header = ({
       }}
     >
       {/* <img src={gradientBackground} alt="" /> */}
+      <img
+        src={transparentBg}
+        alt="transparent backgroung behind the buttons"
+      />
       <div className="allButtons">
         <div className="connectionButtons">
           {token ? (
@@ -57,14 +63,36 @@ const Header = ({
 
         <div className="buttonsContainer">
           <Link onClick={() => (window.location.href = "/")}>
-            <button>Personages</button>
+            <button
+              className={
+                characters === "characters"
+                  ? "selectedButton"
+                  : "unselectedButton"
+              }
+            >
+              Personages
+            </button>
           </Link>
           <Link onClick={() => (window.location.href = "/comics")}>
-            <button>Comics</button>
+            <button
+              className={
+                comics === "comics" ? "selectedButton" : "unselectedButton"
+              }
+            >
+              Comics
+            </button>
           </Link>
           {userId && (
             <Link to={`/characters/favorite/${userId}`}>
-              <button>Favoris</button>
+              <button
+                className={
+                  URLSearchParams.has("comics")
+                    ? "selectedButton"
+                    : "unselectedButton"
+                }
+              >
+                Favoris
+              </button>
             </Link>
           )}
         </div>
