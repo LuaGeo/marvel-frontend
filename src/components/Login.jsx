@@ -50,7 +50,7 @@ const Login = ({ handleUserData, setVisibleLogin }) => {
       }}
     >
       <form
-        className="container"
+        className="container form"
         onSubmit={handleLogin}
         onClick={(event) => {
           event.stopPropagation();

@@ -262,7 +262,7 @@ h2 {
   top: 0;
   left: 0;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 4;
@@ -270,6 +270,7 @@ h2 {
 
 form {
   width: 400px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -277,6 +278,10 @@ form {
   padding: 20px;
   border-radius: 10px;
   background-color: #ffffffb4;
+}
+
+.form {
+  height: 50%;
 }
 
 form > div {

@@ -46,7 +46,7 @@ const Signup = ({ handleUserData, setVisible }) => {
       }}
     >
       <form
-        className="container"
+        className="container form"
         onSubmit={handleSubmit}
         onClick={(event) => {
           event.stopPropagation();
